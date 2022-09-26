@@ -32,20 +32,32 @@ class ViewController: UIViewController {
     
     // MARK: IBActions
     
-    @IBAction func showRedColorValue() {
-        redValue.text = String(round(redSlider.value * 100) / 100)
+    @IBAction func sliderValueChange(_ sender: UISlider) {
+        switch sender {
+        case redSlider:
+            redValue.text = String(round(redSlider.value * 100) / 100)
+        case greenSlider:
+            greenValue.text = String(round(greenSlider.value * 100) / 100)
+        default:
+            blueValue.text = String(round(blueSlider.value * 100) / 100)
+        }
         setViewColor()
     }
     
-    @IBAction func showGreedColorValue() {
-        greenValue.text = String(round(greenSlider.value * 100) / 100)
-        setViewColor()
-    }
-    
-    @IBAction func showBlueColorValue() {
-        blueValue.text = String(round(blueSlider.value * 100) / 100)
-        setViewColor()
-    }
+//    @IBAction func showRedColorValue() {
+//        redValue.text = String(round(redSlider.value * 100) / 100)
+//        setViewColor()
+//    }
+//    
+//    @IBAction func showGreedColorValue() {
+//        greenValue.text = String(round(greenSlider.value * 100) / 100)
+//        setViewColor()
+//    }
+//    
+//    @IBAction func showBlueColorValue() {
+//        blueValue.text = String(round(blueSlider.value * 100) / 100)
+//        setViewColor()
+//    }
     
     // MARK: Private Funtions
     

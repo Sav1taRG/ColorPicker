@@ -81,19 +81,19 @@
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="er5-qD-kvf">
                                                 <rect key="frame" x="-2" y="0.0" width="234" height="31"/>
                                                 <connections>
-                                                    <action selector="showRedColorValue" destination="BYZ-38-t0r" eventType="valueChanged" id="Zmq-iR-XSc"/>
+                                                    <action selector="sliderValueChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="GnS-Yc-rhS"/>
                                                 </connections>
                                             </slider>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="mkr-IP-rdW">
                                                 <rect key="frame" x="-2" y="40" width="234" height="31"/>
                                                 <connections>
-                                                    <action selector="showGreedColorValue" destination="BYZ-38-t0r" eventType="valueChanged" id="H9q-jI-kek"/>
+                                                    <action selector="sliderValueChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="dkH-hM-n8E"/>
                                                 </connections>
                                             </slider>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="urE-UH-GJj">
                                                 <rect key="frame" x="-2" y="80" width="234" height="31"/>
                                                 <connections>
-                                                    <action selector="showBlueColorValue" destination="BYZ-38-t0r" eventType="valueChanged" id="tpb-YU-6O1"/>
+                                                    <action selector="sliderValueChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="RF5-dS-OJZ"/>
                                                 </connections>
                                             </slider>
                                         </subviews>
@@ -102,7 +102,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                        <color key="backgroundColor" systemColor="systemGray4Color"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2Vx-98-ORB" secondAttribute="trailing" constant="16" id="2Yc-5I-fEG"/>
                             <constraint firstItem="2Vx-98-ORB" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.151659" id="jlL-Hc-Uyn"/>
@@ -130,8 +130,8 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
