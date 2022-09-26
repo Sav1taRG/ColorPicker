@@ -25,9 +25,9 @@ class ViewController: UIViewController {
        
         colorView.layer.cornerRadius = 16
        
-        colorView.backgroundColor = view.backgroundColor
+        setViewColor()
+        
         setSlidersColor()
-        setLabelsInitialValues()
     }
     
     // MARK: IBActions
@@ -35,42 +35,26 @@ class ViewController: UIViewController {
     @IBAction func sliderValueChange(_ sender: UISlider) {
         switch sender {
         case redSlider:
-            redValue.text = String(round(redSlider.value * 100) / 100)
+            redValue.text = valueTextFormat(from: redSlider)
         case greenSlider:
-            greenValue.text = String(round(greenSlider.value * 100) / 100)
+            greenValue.text = valueTextFormat(from: greenSlider)
         default:
-            blueValue.text = String(round(blueSlider.value * 100) / 100)
+            blueValue.text = valueTextFormat(from: blueSlider)
         }
         setViewColor()
     }
     
-//    @IBAction func showRedColorValue() {
-//        redValue.text = String(round(redSlider.value * 100) / 100)
-//        setViewColor()
-//    }
-//    
-//    @IBAction func showGreedColorValue() {
-//        greenValue.text = String(round(greenSlider.value * 100) / 100)
-//        setViewColor()
-//    }
-//    
-//    @IBAction func showBlueColorValue() {
-//        blueValue.text = String(round(blueSlider.value * 100) / 100)
-//        setViewColor()
-//    }
     
     // MARK: Private Funtions
+    
+    private func valueTextFormat(from slider: UISlider ) -> String {
+        String(format: "%.2f", slider.value)
+    }
     
     private func setSlidersColor() {
         redSlider.minimumTrackTintColor = .red
         greenSlider.minimumTrackTintColor = .green
         blueSlider.minimumTrackTintColor = .blue
-    }
-    
-    private func setLabelsInitialValues() {
-        redValue.text = "0.0"
-        greenValue.text = "0.0"
-        blueValue.text = "0.0"
     }
     
     private func setViewColor() {
