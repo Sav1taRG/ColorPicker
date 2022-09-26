@@ -52,9 +52,9 @@ class ViewController: UIViewController {
     }
     
     private func setSlidersColor() {
-        redSlider.minimumTrackTintColor = .red
-        greenSlider.minimumTrackTintColor = .green
-        blueSlider.minimumTrackTintColor = .blue
+        redSlider.minimumTrackTintColor = .systemRed
+        greenSlider.minimumTrackTintColor = .systemGreen
+        blueSlider.minimumTrackTintColor = .systemBlue
     }
     
     private func setViewColor() {

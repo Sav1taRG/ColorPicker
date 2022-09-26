@@ -18,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Vx-98-ORB">
-                                <rect key="frame" x="16" y="99.000000000000014" width="361" height="129.33333333333337"/>
+                                <rect key="frame" x="16" y="99" width="361" height="160"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="41B-Pw-y1p">
-                                <rect key="frame" x="16" y="288.33333333333331" width="361" height="110"/>
+                                <rect key="frame" x="16" y="319" width="361" height="110"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="A25-ac-KDv">
                                         <rect key="frame" x="0.0" y="0.0" width="55" height="110"/>
@@ -39,7 +39,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blue:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yep-bb-lyf">
-                                                <rect key="frame" x="0.0" y="75.333333333333371" width="55" height="34.666666666666657"/>
+                                                <rect key="frame" x="0.0" y="75.333333333333314" width="55" height="34.666666666666657"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -105,7 +105,7 @@
                         <color key="backgroundColor" systemColor="systemGray4Color"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2Vx-98-ORB" secondAttribute="trailing" constant="16" id="2Yc-5I-fEG"/>
-                            <constraint firstItem="2Vx-98-ORB" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.151659" id="jlL-Hc-Uyn"/>
+                            <constraint firstItem="2Vx-98-ORB" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.187793" id="NSo-mP-9JU"/>
                             <constraint firstItem="41B-Pw-y1p" firstAttribute="top" secondItem="2Vx-98-ORB" secondAttribute="bottom" constant="60" id="p0W-nU-IOK"/>
                             <constraint firstItem="41B-Pw-y1p" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="s3j-b2-uFq"/>
                             <constraint firstAttribute="trailing" secondItem="41B-Pw-y1p" secondAttribute="trailing" constant="16" id="sfR-Ul-TxR"/>
@@ -126,7 +126,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="72" y="4"/>
+            <point key="canvasLocation" x="70.992366412213741" y="3.5211267605633805"/>
         </scene>
     </scenes>
     <resources>
