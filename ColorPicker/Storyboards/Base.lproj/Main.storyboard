@@ -28,7 +28,7 @@
         <!--Color View Controller-->
         <scene sceneID="oLQ-Um-iwi">
             <objects>
-                <viewController id="wpm-04-DgO" userLabel="Color View Controller" customClass="ColorViewController" customModule="ColorPicker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wpm-04-DgO" userLabel="Color View Controller" customClass="StartViewController" customModule="ColorPicker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TWu-9i-fK7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -139,17 +139,17 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="clY-I7-ojZ">
                                         <rect key="frame" x="238" y="0.0" width="50" height="122"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5sD-Wv-975">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5sD-Wv-975">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fd3-mv-pKa">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fd3-mv-pKa">
                                                 <rect key="frame" x="0.0" y="44" width="50" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mfx-tW-iiS">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mfx-tW-iiS">
                                                 <rect key="frame" x="0.0" y="88" width="50" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -183,15 +183,15 @@
                     </view>
                     <connections>
                         <outlet property="RedValue" destination="tNm-ZY-qkG" id="xP2-jO-Vdf"/>
+                        <outlet property="blueLB" destination="1yM-bc-4Yc" id="932-pa-FiC"/>
                         <outlet property="blueSlider" destination="urE-UH-GJj" id="iIf-we-W87"/>
                         <outlet property="blueTF" destination="mfx-tW-iiS" id="1hj-Ob-Ncs"/>
-                        <outlet property="blueValue" destination="1yM-bc-4Yc" id="932-pa-FiC"/>
+                        <outlet property="greenLB" destination="cfd-w5-62s" id="OmV-hl-QVB"/>
                         <outlet property="greenSlider" destination="mkr-IP-rdW" id="R6t-8x-qmZ"/>
                         <outlet property="greenTF" destination="fd3-mv-pKa" id="tKD-jb-dfY"/>
-                        <outlet property="greenValue" destination="cfd-w5-62s" id="OmV-hl-QVB"/>
+                        <outlet property="redLB" destination="tNm-ZY-qkG" id="ewz-nM-nnj"/>
                         <outlet property="redSlider" destination="er5-qD-kvf" id="fWV-Yw-1Y5"/>
                         <outlet property="redTF" destination="5sD-Wv-975" id="6rl-xE-uKI"/>
-                        <outlet property="redValue" destination="tNm-ZY-qkG" id="ewz-nM-nnj"/>
                         <outlet property="sampleColorView" destination="2Vx-98-ORB" id="Jps-mH-d9g"/>
                     </connections>
                 </viewController>

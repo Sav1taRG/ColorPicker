@@ -16,23 +16,29 @@ class SettingsViewController: UIViewController {
     @IBOutlet var greenSlider: UISlider!
     @IBOutlet var blueSlider: UISlider!
     
-    @IBOutlet var redValue: UILabel!
-    @IBOutlet var greenValue: UILabel!
-    @IBOutlet var blueValue: UILabel!
+    @IBOutlet var redLB: UILabel!
+    @IBOutlet var greenLB: UILabel!
+    @IBOutlet var blueLB: UILabel!
     
     @IBOutlet var redTF: UITextField!
     @IBOutlet var greenTF: UITextField!
     @IBOutlet var blueTF: UITextField!
     
-    var valueColorVC: UIColor!
+    var colorStartVC: UIColor!
     var delegate: SettingsViewControllerDelegate!
     
     // MARK: Life Cycles Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        sampleColorView.backgroundColor = colorStartVC
         sampleColorView.layer.cornerRadius = 16
-        setViewColor()
-        setSlidersColor()
+        redTF.delegate = self
+        greenTF.delegate = self
+        blueTF.delegate = self
+        setSlidersStyle()
+        setSliders()
+        setLbValue(redLB, greenLB, blueLB)
+        setTfValue(redTF, greenTF, blueTF)
     }
     
     // MARK: IBActions
@@ -40,23 +46,26 @@ class SettingsViewController: UIViewController {
     @IBAction func sliderValueChange(_ sender: UISlider) {
         switch sender {
         case redSlider:
-            redValue.text = valueTextFormat(from: redSlider)
+            setTfValue(redTF)
+            setLbValue(redLB)
         case greenSlider:
-            greenValue.text = valueTextFormat(from: greenSlider)
+            setTfValue(greenTF)
+            setLbValue(greenLB)
         default:
-            blueValue.text = valueTextFormat(from: blueSlider)
+            setTfValue(blueTF)
+            setLbValue(blueLB)
         }
         setViewColor()
     }
     
     
-    // MARK: Private Functions
+    // MARK: Private Methods
     
     private func valueTextFormat(from slider: UISlider ) -> String {
         String(format: "%.2f", slider.value)
     }
     
-    private func setSlidersColor() {
+    private func setSlidersStyle() {
         redSlider.minimumTrackTintColor = .systemRed
         greenSlider.minimumTrackTintColor = .systemGreen
         blueSlider.minimumTrackTintColor = .systemBlue
@@ -74,4 +83,52 @@ class SettingsViewController: UIViewController {
 
 extension SettingsViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        
+        guard let newValue = textField.text else { return }
+        guard let currentValue = Float(newValue) else { return }
+        switch textField {
+        case redTF:
+            redSlider.setValue(currentValue, animated: true)
+            setLbValue(redLB)
+        case greenTF:
+            greenSlider.setValue(currentValue, animated: true)
+            setLbValue(greenLB)
+        default:
+            blueSlider.setValue(currentValue, animated: true)
+            setLbValue(blueLB)
+        }
+        setViewColor()
+    }
+    
+    func setSliders() {
+        let ciColor = CIColor(color: colorStartVC)
+        redSlider.value = Float(ciColor.red)
+        greenSlider.value = Float(ciColor.green)
+        blueSlider.value = Float(ciColor.blue)
+    }
+    
+    func setTfValue(_ textFields: UITextField...) {
+        for textField in textFields {
+            switch textField {
+            case redTF:
+                redTF.text = valueTextFormat(from: redSlider)
+            case greenTF:
+                greenTF.text = valueTextFormat(from: greenSlider)
+            default:
+                blueTF.text = valueTextFormat(from: blueSlider)
+            }
+        }
+    }
+    
+    func setLbValue(_ labels: UILabel...) {
+        for label in labels {
+            switch label {
+            case redLB:
+                redLB.text = valueTextFormat(from: redSlider)
+            case greenLB:
+                greenLB.text = valueTextFormat(from: greenSlider)
+            default:
+                blueLB.text = valueTextFormat(from: blueSlider)
+            }
+        }
+    }
+}

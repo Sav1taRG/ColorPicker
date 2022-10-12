@@ -11,7 +11,7 @@ protocol SettingsViewControllerDelegate {
     func setBackground(color: UIColor)
 }
 
-class ColorViewController: UIViewController {
+class StartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,10 +19,11 @@ class ColorViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let settingsVC = segue.destination as? SettingsViewController else { return }
-        settingsVC.valueColorVC = view.backgroundColor
+        settingsVC.delegate = self
+        settingsVC.colorStartVC = view.backgroundColor
     }
 }
-    extension ColorViewController: SettingsViewControllerDelegate {
+    extension StartViewController: SettingsViewControllerDelegate {
         func setBackground(color: UIColor) {
             view.backgroundColor = color
         }
