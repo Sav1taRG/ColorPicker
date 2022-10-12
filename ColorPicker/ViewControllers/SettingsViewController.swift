@@ -49,8 +49,7 @@ class SettingsViewController: UIViewController {
         }
     
     // MARK: IBActions
-    
-    @IBAction func setColorPressed() {
+    @IBAction func setColorButtonPressed() {
         delegate.setBackground(color: sampleColorView.backgroundColor ?? .black)
         dismiss(animated: true)
     }
@@ -71,7 +70,6 @@ class SettingsViewController: UIViewController {
     }
     
     // MARK: Private Methods
-    
     private func valueTextFormat(from slider: UISlider ) -> String {
         String(format: "%.2f", slider.value)
     }
@@ -124,6 +122,7 @@ class SettingsViewController: UIViewController {
         }
     }
     
+    // MARK: Alert
     private func showAlert(
         title: String,
         message: String,
@@ -147,7 +146,8 @@ extension SettingsViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let newValue = textField.text else { return }
         guard let currentValue = Float(newValue),
-        currentValue > 0, currentValue < 1 else
+              currentValue > 0,
+              currentValue < 1 else
         {
             showAlert(
                 title: "Warning!",
@@ -170,7 +170,33 @@ extension SettingsViewController: UITextFieldDelegate {
         setViewColor()
     }
     
-//    func textFieldDidBeginEditing(_ textField: UITextField) {
-//        <#code#>
-//    }
+    // MARK: Keyboard Setup Method
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        let keyboardToolbar = UIToolbar()
+        keyboardToolbar.sizeToFit()
+        textField.inputAccessoryView = keyboardToolbar
+        
+        let doneButton = UIBarButtonItem(
+            barButtonSystemItem: .done,
+            target: self,
+            action: #selector(donePressed)
+        )
+        
+        let flexibleSpace = UIBarButtonItem(
+            barButtonSystemItem: .flexibleSpace,
+            target: nil,
+            action: nil
+        )
+        
+        keyboardToolbar.items = [flexibleSpace, doneButton]
+        
+        textField.selectedTextRange = textField.textRange(
+            from: textField.beginningOfDocument,
+            to: textField.endOfDocument
+        )
+    }
+    
+    @objc private func donePressed() {
+        view.endEditing(true)
+    }
 }
