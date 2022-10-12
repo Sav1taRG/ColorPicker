@@ -24,6 +24,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet var greenTF: UITextField!
     @IBOutlet var blueTF: UITextField!
     
+    // MARK: Public Properties
     var colorStartVC: UIColor!
     var delegate: SettingsViewControllerDelegate!
     
@@ -35,13 +36,24 @@ class SettingsViewController: UIViewController {
         redTF.delegate = self
         greenTF.delegate = self
         blueTF.delegate = self
+        
         setSlidersStyle()
         setSliders()
         setLbValue(redLB, greenLB, blueLB)
         setTfValue(redTF, greenTF, blueTF)
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            super.touchesBegan(touches, with: event)
+            view.endEditing(true)
+        }
+    
     // MARK: IBActions
+    
+    @IBAction func setColorPressed() {
+        delegate.setBackground(color: sampleColorView.backgroundColor ?? .black)
+        dismiss(animated: true)
+    }
     
     @IBAction func sliderValueChange(_ sender: UISlider) {
         switch sender {
@@ -57,7 +69,6 @@ class SettingsViewController: UIViewController {
         }
         setViewColor()
     }
-    
     
     // MARK: Private Methods
     
@@ -79,12 +90,72 @@ class SettingsViewController: UIViewController {
             alpha: 1
         )
     }
+    
+    private func setSliders() {
+        let ciColor = CIColor(color: colorStartVC)
+        redSlider.value = Float(ciColor.red)
+        greenSlider.value = Float(ciColor.green)
+        blueSlider.value = Float(ciColor.blue)
+    }
+    
+    private func setTfValue(_ textFields: UITextField...) {
+        for textField in textFields {
+            switch textField {
+            case redTF:
+                redTF.text = valueTextFormat(from: redSlider)
+            case greenTF:
+                greenTF.text = valueTextFormat(from: greenSlider)
+            default:
+                blueTF.text = valueTextFormat(from: blueSlider)
+            }
+        }
+    }
+    
+    private func setLbValue(_ labels: UILabel...) {
+        for label in labels {
+            switch label {
+            case redLB:
+                redLB.text = valueTextFormat(from: redSlider)
+            case greenLB:
+                greenLB.text = valueTextFormat(from: greenSlider)
+            default:
+                blueLB.text = valueTextFormat(from: blueSlider)
+            }
+        }
+    }
+    
+    private func showAlert(
+        title: String,
+        message: String,
+        textField: UITextField
+    )
+    {
+        let alert = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+            self.setTfValue(textField)
+        })
+        present(alert, animated: true)
+    }
 }
 
+// MARK: Text Field Delegate
 extension SettingsViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let newValue = textField.text else { return }
-        guard let currentValue = Float(newValue) else { return }
+        guard let currentValue = Float(newValue),
+        currentValue > 0, currentValue < 1 else
+        {
+            showAlert(
+                title: "Warning!",
+                message: "Entered value is out of range!",
+                textField: textField
+            )
+            return
+        }
         switch textField {
         case redTF:
             redSlider.setValue(currentValue, animated: true)
@@ -99,36 +170,7 @@ extension SettingsViewController: UITextFieldDelegate {
         setViewColor()
     }
     
-    func setSliders() {
-        let ciColor = CIColor(color: colorStartVC)
-        redSlider.value = Float(ciColor.red)
-        greenSlider.value = Float(ciColor.green)
-        blueSlider.value = Float(ciColor.blue)
-    }
-    
-    func setTfValue(_ textFields: UITextField...) {
-        for textField in textFields {
-            switch textField {
-            case redTF:
-                redTF.text = valueTextFormat(from: redSlider)
-            case greenTF:
-                greenTF.text = valueTextFormat(from: greenSlider)
-            default:
-                blueTF.text = valueTextFormat(from: blueSlider)
-            }
-        }
-    }
-    
-    func setLbValue(_ labels: UILabel...) {
-        for label in labels {
-            switch label {
-            case redLB:
-                redLB.text = valueTextFormat(from: redSlider)
-            case greenLB:
-                greenLB.text = valueTextFormat(from: greenSlider)
-            default:
-                blueLB.text = valueTextFormat(from: blueSlider)
-            }
-        }
-    }
+//    func textFieldDidBeginEditing(_ textField: UITextField) {
+//        <#code#>
+//    }
 }
